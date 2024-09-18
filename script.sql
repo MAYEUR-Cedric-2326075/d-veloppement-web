@@ -62,7 +62,7 @@ create table platingredien(
     FOREIGN KEY (id_ingredien) REFERENCES ingredien(id_ingredien),
     FOREIGN KEY (id_plat) REFERENCES plat(id_plat)
 );
-create table date(
+create table dat(
     dat date primary key
 );
 

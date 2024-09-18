@@ -68,9 +68,9 @@ create table dat(
 
 
 create table repas(
-    
+    id_repas int primary key,
+    id_grade serial,
     dat date,
-
-
+    FOREIGN KEY (id_grade) REFERENCES grade(id_grade)
 );
 

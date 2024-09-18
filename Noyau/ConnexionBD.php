@@ -6,7 +6,7 @@ final class ConnectionBD
     public PDO $pdo;
 
     private static ?self $instance = null;
-    private const db_server_name = "mysql-.alwaysdata.net";
+    private const db_server_name = "mysql-ordredestenracs.alwaysdata.net";
     private const db_username = "376578";
     private const db_password = "c%8H!mG5AWA^@z";
     private const db_name = "ordredestenracs_bd";

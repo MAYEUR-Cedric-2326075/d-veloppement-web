@@ -1,21 +1,64 @@
 <!doctype html>
 <html lang="fr">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Tenrac</title>
-    </head>
+<head>
+  <meta charset="utf-8">
+  <title>Les tenrac</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
     <body>
-        <?php Vue::montrer('standard/entete'); ?>
+        <header>
+            <div>
+                <nav>
+                    <a href="./Connexion.php">Connexion</a>
+                </nav>
+            </div>
+            <a href="./PageAccueil.php"><img id="logo" src=""></a>
+            <nav>
+                <ol>
+                    <li><a href="./PageAccueil.php">Accueil</a></li>
+                    <li><a href="./Plat.php">Plat</a></li>
+                    <li><a href="./Repas.php">Repas</a></li>
+                </ol>
+            </nav>
+        </header>
         
-        <form action="???.php" method="post">
-		<input type="nom"  name="nom" size="20" />
-		<input type="email"  name="email" size="20" />
-		<input type="telephone"  name="telephone" size="20" />
-		<input type="addresse"  name="addresse" size="20" />
-		<input type="submit" value="Submit" />
-		<input type="reset" value="Reset" />
-		</form>
-		
-        <?php Vue::montrer('standard/pied'); ?>
+        <main>
+            <form action="/ma-page-de-traitement" method="post">
+              <ul>
+                <li>
+                    <label for="name">Nom</label>
+                    <input type="text" id="name" name="tenrac_name" required="required"/>
+                </li>
+                <li>
+                    <label for="email">E-mail</label>
+                    <input type="email" name="tenrac_email" id="email" required="required"/>
+                </li>
+                <li>
+                    <label for="telephone">Telephone</label>
+                    <input type="tel" name="tenrac_telephone" id="telephone" required="required"/>
+                </li>
+                <li>
+                    <label for="addresse">Addresse</label>
+                    <input type="text" name="tenrac_addresse" id="addresse" required="required"/>
+                </li>
+                <li>
+                    <label for="sexe">Sexe</label><br>
+                    <label>Homme</label>
+                    <input type="radio" name="sexe" value="H" checked><br>
+                    <label>Femme</label>
+                    <input type="radio" name="sexe" value="F" >
+                </li>
+                <li>
+                <input type="submit" value="Envoyer">
+                <input type="reset" value="Effacer">
+                </li>
+              </ul>
+            </form>
+        </main>
+        <footer>
+
+        </footer>
     </body>
 </html>
+

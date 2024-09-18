@@ -34,14 +34,10 @@
             <p id="slidecounter">Page</p>
         </div>
         <main>
-            <?php
-            foreach ($repas as $repas) {
-                echo $repas['???']
-            }
-            ?>
+            
         </main>
         <footer>
-
+            
         </footer>
     </body>
 </html>

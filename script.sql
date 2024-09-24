@@ -13,7 +13,7 @@ CREATE TABLE Sex (
 libel_sex VARCHAR PRIMARY KEY NOT NULL);
 
 CREATE TABLE Title (
-id_title INT PRIMARY KEY NOT NULL);
+id_title serial PRIMARY KEY NOT NULL);
 
 CREATE TABLE TitleSex (
 libel_sex VARCHAR NOT NULL,
@@ -31,7 +31,7 @@ libel_dignite_sex VARCHAR NOT NULL,
 PRIMARY KEY (id_dignity,libel_sex));
 
 CREATE TABLE Rank (
-id_rank INT PRIMARY KEY NOT NULL);
+id_rank serial PRIMARY KEY NOT NULL);
 
 CREATE TABLE RankSex (
 libel_sex VARCHAR NOT NULL,
@@ -58,7 +58,8 @@ id_meal serial PRIMARY KEY NOT NULL,
 dat DATE NOT NULL,
 address VARCHAR NOT NULL,
 id_organizer INT NOT NULL,
-id_club INT);
+id_club INT DEFAULT 1
+);
 
 CREATE TABLE TenracMeal (
 id_tenrac INT NOT NULL,
@@ -74,7 +75,7 @@ id_repas INT NOT NULL,
 PRIMARY KEY (id_plat,id_repas));
 
 CREATE TABLE Dish (
-id_dish INT PRIMARY KEY NOT NULL,
+id_dish serial PRIMARY KEY NOT NULL,
 libel_dish VARCHAR NOT NULL);
 
 CREATE TABLE Sauce (
@@ -92,7 +93,7 @@ is_vegetable BOOLEAN NOT NULL,
 libel_ingredient INT NOT NULL);
 
 CREATE TABLE DishIngredient (
-id_ingredient INT NOT NULL,
+id_ingredient serial NOT NULL,
 id_plat INT NOT NULL,
 PRIMARY KEY (id_ingredient,id_plat));
 

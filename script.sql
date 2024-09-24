@@ -123,4 +123,31 @@ ALTER TABLE DishSauce ADD CONSTRAINT FK23 FOREIGN KEY (id_dish) REFERENCES Dish(
 ALTER TABLE DishIngredient ADD CONSTRAINT FK24 FOREIGN KEY (id_ingredient) REFERENCES Ingredient(id_ingredient);
 ALTER TABLE DishIngredient ADD CONSTRAINT FK25 FOREIGN KEY (id_plat) REFERENCES Dish(id_dish);
 
-insert into Club()
+
+
+INSERT INTO Club (codePostal, denomination) VALUES (75001, 'Club Central');
+INSERT INTO Club (codePostal, denomination) VALUES (99999, 'Ordre des Tenracs');
+
+INSERT INTO Sauce (id_sauce, libel_sauce) VALUES (1, 'Mayonnaise');
+INSERT INTO Sauce (id_sauce, libel_sauce) VALUES (2, 'Ketchup');
+
+
+-- Insérer des grades dans la table Grade
+INSERT INTO Grade (id_grade) VALUES (1);  -- Affilié
+INSERT INTO Grade (id_grade) VALUES (2);  -- Sympathisant
+INSERT INTO Grade (id_grade) VALUES (3);  -- Adhérent
+INSERT INTO Grade (id_grade) VALUES (4);  -- Chevalier / Dame
+INSERT INTO Grade (id_grade) VALUES (5);  -- Grand Chevalier / Haute Dame
+INSERT INTO Grade (id_grade) VALUES (6);  -- Commandeur
+INSERT INTO Grade (id_grade) VALUES (7);  -- Grand'Croix
+
+
+-- Insérer des rangs dans la table Rank
+INSERT INTO Rank (id_rank) VALUES (1);  -- Novice
+INSERT INTO Rank (id_rank) VALUES (2);  -- Compagnon
+
+-- Insérer des dignités dans la table Dignity
+INSERT INTO Dignity (id_dignity) VALUES (1);  -- Maître
+INSERT INTO Dignity (id_dignity) VALUES (2);  -- Grand Chancelier
+INSERT INTO Dignity (id_dignity) VALUES (3);  -- Grand Maître
+

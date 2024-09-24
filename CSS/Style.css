@@ -1,0 +1,483 @@
+html, body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    box-shadow: 0px 0px 22px -6px rgba(0,0,0,0.32);
+}
+
+header div {
+    background-color: rgb(0, 101, 189);
+    width: 100%;
+    height: 2.7em;
+}
+
+header img {
+    height: 5em;
+    margin: 1em;
+}
+
+nav {
+    width: 100%;
+    overflow-x: auto;
+}
+
+nav ol {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+div nav, div nav li,  div nav ol {
+    height: 100%;
+}
+
+div nav a {
+    background-color: white;
+
+    padding: 0 1em;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    text-decoration: none;
+    font-weight: 700;
+    transition-duration: 150ms;
+}
+
+div nav a:hover {
+    background-color: lightslategrey;
+    color: white;
+}
+
+header div li {
+    list-style: none;
+}
+
+header > nav li {
+    list-style: none;
+    flex: 1 auto;
+}
+
+header > nav a {
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+    transition-duration: 150ms;
+    border-radius: 10px;
+}
+
+header > nav a:hover {
+    background-color: rgb(255, 255, 255);
+    transform: scale(0.9);
+    outline: solid black 0.1em;
+}
+
+main {
+    width: 1500px;
+    max-width: calc(100% - 2em);
+    margin: auto;
+    padding: 1em;
+    flex: 1 1;
+}
+
+form {
+    margin: auto;
+    width: max-content;
+    max-width: calc(100% - 3em);
+    border: solid rgb(0, 101, 189);
+    border-radius: 1em;
+    padding: 1em 5em;
+    background-color: rgb(238, 238, 238);
+}
+
+form h1 {
+    padding: 0;
+    margin: 0;
+}
+
+label {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin: 0.2em 0;
+    display: block;
+}
+
+input {
+    background-color: white;
+    padding: 1em;
+    display: block;
+    border: solid 0.2em;
+    border-radius: 0.8em;
+    width: 300px;
+    max-width: calc(100% - 2em);
+}
+
+.button, input[type="submit"] {
+    background-color: white;
+    display: block;
+    border: none;
+    font-weight: 600;
+    padding: 1em 2em;
+    transition-duration: 150ms;
+    cursor: pointer;
+    color: #000;
+    border-radius: 0.8em;
+    text-decoration: none;
+    text-align: center;
+}
+
+.button:hover, input[type="submit"]:hover {
+    background-color: rgb(0, 101, 189);
+    color: white;
+}
+
+#send {
+    margin-top: 1em;
+    width: max-content;
+    margin: auto;
+}
+
+#themebutton {
+    position: absolute;
+    right: 0;
+}
+
+/* Make a slider with #slider container and #slide for the slide */
+#slider {
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+
+    aspect-ratio: 16/5;
+    /*min-width: 100%;
+    max-height: calc(100% - 200px);*/
+
+    min-width: calc(100%);
+    max-height: calc(100vh - 200px);
+
+    background-color: #fff;
+}
+
+#slider > #slidecounter {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 100;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 5px;
+}
+
+#slider .slide {
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 30;
+    transition-duration: 500ms;
+    background-color: #f5f5f5;
+}
+
+#slider h1, #slider h2, #slider h3 {
+    text-shadow: #ffffff 5px 5px 10px;
+    text-align: center;
+}
+
+#slider .slide > img.img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+}
+
+#slider .slide > a.img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+}
+
+#slider .slide > a.img > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#slider img.imgContain, #slider a.imgContain > img {
+    object-fit: contain !important;
+}
+
+#slider .slidebutton {
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 25px;
+    height: 50px;
+    text-align: center;
+    width: 50px;
+    z-index: 50;
+    position: absolute;
+    line-height: 1.5;
+    transition-duration: 150ms;
+
+    background-color: #000;
+    border: 1px solid rgb(44, 44, 44);
+    color: #ffffff;
+}
+
+#slider .slidebutton:hover {
+    background-color: white;
+    color: black;
+    transform: scale(1.05);
+}
+
+#slider .slidebutton:active {
+    transform: scale(0.95);
+}
+
+#slider .slidebutton.left {
+    left: 5px;
+}
+
+.slidebutton.right {
+    right: 5px;
+}
+
+#slide0 .img {
+    opacity: 0.5;
+}
+
+#slide0 div {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+#slide0 .logo {
+    width: 70%;
+    max-height: 50%;
+    object-fit: contain;
+    background-color: white;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+h1,h2 {
+    padding: 15px;
+}
+
+#profiles {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.profile {
+    position: relative;
+    width: 320px;
+    height: 150px;
+
+    margin: 0.2em;
+
+    perspective: 2000px;
+    perspective-origin: top;
+}
+
+.profile .back, .profile .front {
+    background: linear-gradient(90deg, rgba(243,243,243,1) 0%, rgba(255,255,255,1) 100%);
+    background-color: #f3f3f3;
+
+    border: solid 0.2em rgb(221, 221, 221);
+    border-radius: 2em;
+
+    padding: 0.2em;
+    
+    display: flex;
+    position: absolute;
+
+    backface-visibility: hidden;
+
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.86,0,0.07,1);
+
+    width: -webkit-fill-available;
+    width: -moz-available;
+    height: -webkit-fill-available;
+    height: -moz-available;;
+}
+
+.profile > div > div {
+    transform: translateZ(90px);
+    backface-visibility: hidden;
+}
+
+.profile .back {
+    z-index: 1;
+}
+
+.profile .front {
+    z-index: 2;
+}
+
+.profile:hover > .back {
+    transform: rotateY(360deg);
+}
+
+.profile:hover > .front {
+    transform: rotateY(180deg);
+}
+
+.profile img {
+    height: 90%;
+
+    transform: translate3d(10%, 1%, 150px);
+    backface-visibility: hidden;
+}
+
+.profile h1, .profile h2 {
+    margin: 0;
+    padding: 0 1em;
+}
+
+footer{
+    background-color: rgb(0, 101, 189);
+    text-align: center;
+    color: white;
+    border-radius: 1000px 1000px 0 0;
+}
+
+.logo2{
+    width: auto;
+    height: 3em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 1em;
+}
+
+#texte10{
+    border-radius: 1em;
+    padding: 1em 2em;
+    background-color: rgb(238, 238, 238);
+	width: -webkit-fill-available;
+    width: -moz-available;
+    margin: 1em;
+}
+
+.profile a {
+    padding-left: 1em;
+}
+
+.poster {
+    width: 300px;
+    max-width: 100%;
+    aspect-ratio: 11/15;
+    object-fit: cover;
+    border-radius: 10px;
+    transition-duration: 150ms;
+    margin: 1em;
+}
+
+.poster:hover {
+    transform: skew(-5deg, 0deg);
+}
+
+#posters {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+#disc1{
+    height: 6em;
+    width: 6em;
+    object-fit: contain ;
+    filter: invert();
+    margin-right: 5em;
+    margin-left: 3em;
+}
+
+.semestre{
+    border: solid 0.5em white;
+    background-color: whitesmoke;
+    box-shadow: 0px 0px 22px -6px rgba(0,0,0,0.32);
+    margin: 2em;
+    padding: 1em;
+    border-radius: 2em;
+}
+
+
+
+@media (max-width: 768px) {
+    #slider {
+        aspect-ratio: 9/8;
+        min-width: 100vw;
+    }
+
+    .slide div {
+        display: block !important;
+    }
+
+    .slidebutton {
+        font-size: 15px;
+        width: 38px;
+        height: 38px;
+        line-height: 2px;
+    }
+
+    #slider .slidebutton {
+        font-size: 20px;
+        width: 40px;
+        height: 40px;
+        line-height: 2px;
+    }
+
+    form {
+        padding: 1em 1em;
+    }
+
+    .semestre {
+        margin: 1em 0;
+        padding: 0.1em;
+    }
+
+    #texte10 {
+        margin: 0;
+    }
+}
+
+.nomResp{
+    font-size: 80%;
+    padding-left: 2em;
+}

@@ -22,7 +22,7 @@ libel_sex_titre INT NOT NULL,
 PRIMARY KEY (libel_sex,id_title));
 
 CREATE TABLE Dignity (
-id_dignity INT PRIMARY KEY NOT NULL);
+id_dignity serial PRIMARY KEY NOT NULL);
 
 CREATE TABLE DignitySex (
 id_dignity INT NOT NULL,
@@ -40,7 +40,7 @@ libel_rang_sex VARCHAR NOT NULL,
 PRIMARY KEY (libel_sex,id_rank));
 
 CREATE TABLE Grade (
-id_grade INT PRIMARY KEY NOT NULL);
+id_grade serial PRIMARY KEY NOT NULL);
 
 CREATE TABLE GradeSex (
 libel_sex VARCHAR NOT NULL,
@@ -122,3 +122,5 @@ ALTER TABLE DishSauce ADD CONSTRAINT FK22 FOREIGN KEY (id_sauce) REFERENCES Sauc
 ALTER TABLE DishSauce ADD CONSTRAINT FK23 FOREIGN KEY (id_dish) REFERENCES Dish(id_dish);
 ALTER TABLE DishIngredient ADD CONSTRAINT FK24 FOREIGN KEY (id_ingredient) REFERENCES Ingredient(id_ingredient);
 ALTER TABLE DishIngredient ADD CONSTRAINT FK25 FOREIGN KEY (id_plat) REFERENCES Dish(id_dish);
+
+insert into Club()

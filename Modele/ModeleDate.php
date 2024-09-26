@@ -1,7 +1,13 @@
 <?php
 
 class ModeleDate {
-    // Votre code ici
+
+    public function getDate() {
+        $sql = "SELECT * FROM dat";
+        $stmt = $this->pdo->getPdo()->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 }
 
 ?>

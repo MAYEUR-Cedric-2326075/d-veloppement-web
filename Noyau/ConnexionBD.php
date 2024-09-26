@@ -11,7 +11,7 @@ final class ConnectionBD
     private const db_password = "c%8H!mG5AWA^@z";
     private const db_name = "ordredestenracs_bd";
 
-    private function __construct() {
+    public function __construct() {
         $this->pdo = new PDO(
             sprintf('mysql:dbname=%s;host=%s', self::db_name, self::db_server_name),
             self::db_username,

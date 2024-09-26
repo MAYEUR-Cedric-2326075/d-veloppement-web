@@ -1,28 +1,14 @@
-<!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <title>Les tenrac</title>
-  <link rel="stylesheet" href="../CSS/Style.css">
-  <script src="../JavaScript/script.js"></script>
-    <link rel="icon" href="../Images/tenracIcon.ico" />
-</head>
-    <body>
-        <header>
-            <div>
-                <nav>
-                    <a href="./Connexion.php">Connexion</a>
-                </nav>
-            </div>
-            <a href="./PageAccueil.php"><img id="logo" src="../Images/Slider1.jpg"></a>
-            <nav>
-                <ol>
-                    <li><a href="./PageAccueil.php">Accueil</a></li>
-                    <li><a href="./Plat.php">Plat</a></li>
-                    <li><a href="./Repas.php">Repas</a></li>
-                </ol>
-            </nav>
-        </header>
+<?php
+include 'fonctions.php';
+?>
+
+<?php
+haut_page();
+?>
+
+<?php
+header_page();
+?>
         <div id="slider">
             <div class="slide" id="slide3">
                 <img class="img" src="../Images/Slider3.jpg">
@@ -40,9 +26,7 @@
         <main>
             
         </main>
-        <footer>
-            
-        </footer>
-    </body>
-</html>
 
+<?php
+bas_page();
+?>

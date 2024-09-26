@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$USER_HOME$/PhpstormProjects/PDO_VM/.idea/PDO_VM.iml" filepath="$USER_HOME$/PhpstormProjects/PDO_VM/.idea/PDO_VM.iml" />
+      <module fileurl="file://$USER_HOME$/PhpstormProjects/Projet.php/.idea/Projet.php.iml" filepath="$USER_HOME$/PhpstormProjects/Projet.php/.idea/Projet.php.iml" />
+      <module fileurl="file://$USER_HOME$/PhpstormProjects/Tampon/.idea/Tampon.iml" filepath="$USER_HOME$/PhpstormProjects/Tampon/.idea/Tampon.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/d-veloppement-web.iml" filepath="$PROJECT_DIR$/.idea/d-veloppement-web.iml" />
     </modules>
   </component>

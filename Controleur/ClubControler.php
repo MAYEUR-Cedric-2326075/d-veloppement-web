@@ -1,61 +1,60 @@
 <?php
 
 require_once 'Noyau/ConnexionBD.php';
-require_once 'Modele/ModeleClub.php';
 
 class ClubController {
-    private $clubModel;
 
-    public function __construct($db) {
-        $this->clubModel = new ClubModel($db);
+
+    private $pdo;
+
+
+    public function __construct() {
+        $this->pdo = ConnectionBD::getInstance()->getPdo();
     }
+
 
     public function createClub($data) {
-        if (!isset($data['denomination']) || !isset($data['codePostal'])) {
-            return "Champs denomination et codePostal obligatoires.";
-        }
-
-        $this->clubModel->createClub($data);
-        return "Club créé.";
+        $sql = "INSERT INTO Club (codePostal, denomination) VALUES (:codePostal, :denomination)";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':codePostal', $data['codePostal']);
+        $stmt->bindParam(':denomination', $data['denomination']);
+        return $stmt->execute();
     }
+
 
     public function getClub($id) {
-        $club = $this->clubModel->getClubById($id);
-
-        if ($club) {
-            return $club;
-        } else {
-            return "Club non trouvé.";
-        }
+        $sql = "SELECT * FROM Club WHERE id_club = :id_club";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id_club', $id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
 
     public function getAllClubs() {
-        return $this->clubModel->getAllClubs();
+        $sql = "SELECT * FROM Club";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
 
     public function updateClub($id, $data) {
-        if (!isset($data['denomination']) || !isset($data['codePostal'])) {
-            return "Champs denomination et codePostal obligatoires.";
-        }
-
-        $updated = $this->clubModel->updateClub($id, $data);
-        if ($updated) {
-            return "Club mis à jour.";
-        } else {
-            return "Erreur.";
-        }
+        $sql = "UPDATE Club SET codePostal = :codePostal, denomination = :denomination WHERE id_club = :id_club";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id_club', $id);
+        $stmt->bindParam(':codePostal', $data['codePostal']);
+        $stmt->bindParam(':denomination', $data['denomination']);
+        return $stmt->execute();
     }
+
 
     public function deleteClub($id) {
-        $deleted = $this->clubModel->deleteClub($id);
-
-        if ($deleted) {
-            return "Club supprimé.";
-        } else {
-            return "Erreur.";
-        }
+        $sql = "DELETE FROM Club WHERE id_club = :id_club";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id_club', $id);
+        return $stmt->execute();
     }
 }
-
 
 ?>

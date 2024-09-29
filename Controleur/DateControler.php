@@ -1,86 +1,50 @@
 <?php
 
 require_once 'Noyau/ConnexionBD.php';
-require_once 'Modele/ModeleDate.php';
 
 class DateController {
 
-    private $dateModel;
+    private $pdo;
 
-
-    public function __construct($db) {
-
-        $this->dateModel = new DateModel($db);
+    public function __construct() {
+        $this->pdo = ConnectionBD::getInstance()->getPdo();
     }
-
 
     public function createDate($data) {
-
-        if (!isset($data['dat'])) {
-            return "Champ date obligatoire.";
-        }
-
-        $data['dat'] = date('Y-m-d', strtotime($data['dat']));
-
-        $this->dateModel->createDate($data);
-        return "Date créée.";
+        $sql = "INSERT INTO Date (date) VALUES (:date)";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':date', $data['date']);
+        return $stmt->execute();
     }
 
-
-    public function getDateById($id) {
-
-        if (!is_numeric($id)) {
-            return "ID invalide.";
-        }
-
-        $date = $this->dateModel->getDateById($id);
-        if ($date) {
-            return $date;
-        } else {
-            return "Date non trouvée.";
-        }
+    public function getDate($id) {
+        $sql = "SELECT * FROM Date WHERE id_date = :id_date";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id_date', $id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-
 
     public function getAllDates() {
-
-        return $this->dateModel->getAllDates();
+        $sql = "SELECT * FROM Date";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
 
     public function updateDate($id, $data) {
-
-        if (!is_numeric($id)) {
-            return "ID invalide.";
-        }
-
-        if (!isset($data['dat'])) {
-            return "Champ date obligatoire.";
-        }
-
-        $data['dat'] = date('Y-m-d', strtotime($data['dat']));
-
-        $updated = $this->dateModel->updateDate($id, $data);
-        if ($updated) {
-            return "Date mise à jour.";
-        } else {
-            return "Erreur de la mise à jour de la date.";
-        }
+        $sql = "UPDATE Date SET date = :date WHERE id_date = :id_date";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id_date', $id);
+        $stmt->bindParam(':date', $data['date']);
+        return $stmt->execute();
     }
 
-
     public function deleteDate($id) {
-
-        if (!is_numeric($id)) {
-            return "ID invalide.";
-        }
-
-        $deleted = $this->dateModel->deleteDate($id);
-        if ($deleted) {
-            return "Date supprimée.";
-        } else {
-            return "Erreur suppression de la date.";
-        }
+        $sql = "DELETE FROM Date WHERE id_date = :id_date";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':id_date', $id);
+        return $stmt->execute();
     }
 }
 

@@ -131,14 +131,19 @@ final class ConnectionBD
         $query = "SELECT $field FROM $S_table WHERE $fieldIdentification = :identification LIMIT 1";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindValue(':identification', $identification);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        if (!$result) {
+        if (!$stmt->execute()) {
+            var_dump($stmt->errorInfo());
             return '';
         }
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if (!$result)
+            return '';
 
-        return $result[0][$field] ?? '';
+
+        return $result[$field] ?? '';
     }
+
+
 }
 ?>

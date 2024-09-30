@@ -11,7 +11,7 @@ final class ConnectionBD
     private const db_password = 'Dm6^haY+g2a9bQN';
     private const db_name = 'ordredestenracs_bd';
 
-    private function __construct()
+    public function __construct()
     {
         $this->pdo = new PDO(
             sprintf('mysql:dbname=%s;host=%s', self::db_name, self::db_server_name),
@@ -32,6 +32,7 @@ final class ConnectionBD
     {
         return $this->pdo;
     }
+
     /*
     public function prepare($query):bool
     {
@@ -66,17 +67,20 @@ final class ConnectionBD
         return $value;
     }
 
-    public function delete(string $S_table, $where)
+    public function delete(string $S_table, array $where): bool
     {
-        $query = "DELETE FROM $S_table WHERE $where";
-
-        try {
-            $stmt = $this->pdo->prepare($query);
-            $stmt->execute();
-            return true;
-        } catch (PDOException $e) {
-            die('Error : ' . $e->getMessage());
+        $conditions = [];
+        foreach ($where as $key => $value) {
+            $conditions[] = "$key = :$key";
         }
+        $query = "DELETE FROM $S_table WHERE " . implode(' AND ', $conditions);
+
+        $stmt = $this->pdo->prepare($query);
+        foreach ($where as $key => $value) {
+            $stmt->bindValue(":$key", $value);
+        }
+        $stmt->execute();
+        return true;
     }
 
     public function update(string $S_table, $data, $where)
@@ -96,18 +100,7 @@ final class ConnectionBD
             die('Error : ' . $e->getMessage());
         }
     }
-/*
-    public function getAll(string $S_table): array
-    {
-        $query = "SELECT * FROM $S_table";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->execute();
-        $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
-        if(!$result)
-            return [];
-        return $result;
-    }
-*/
+
     public function getAll(string $S_table, ?string $fieldIdentification = null, ?string $identification = null): array
     {
         if (is_null($fieldIdentification) || is_null($identification)) {
@@ -133,50 +126,19 @@ final class ConnectionBD
     }
 
 
-/*
-    public function getElement(string $S_table, string $field, ?bool $unique = true,?string $fieldIdentification = null,
-                               ?string $identification = null
-    ): array|string {
-        if (is_null($fieldIdentification) || is_null($identification)) {
-            $query = "SELECT $field FROM $S_table";
-            if ($unique)
-                $query .= " LIMIT 1";
-
-        }
-        else{
-            $query = "SELECT $field FROM $S_table WHERE $fieldIdentification = :identification";
-            if ($unique)
-                $query .= " LIMIT 1";
-
-        }
-
+    public function getElement(string $S_table, string $field, string $fieldIdentification, string $identification): string
+    {
+        $query = "SELECT $field FROM $S_table WHERE $fieldIdentification = :identification LIMIT 1";
         $stmt = $this->pdo->prepare($query);
-        if (!is_null($fieldIdentification) && !is_null($identification))
-            $stmt->bindValue(':identification', $identification);
+        $stmt->bindValue(':identification', $identification);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        if (!$result)
-            return [];
 
-        if ($unique && count($result) === 1)
-            return $result[0][$field];
+        if (!$result) {
+            return '';
+        }
 
-        return $result;
+        return $result[0][$field] ?? '';
     }
-
-*/
-public function getElement(string $S_table, string $field, string $fieldIdentification, string $identification): string {
-    $query = "SELECT $field FROM $S_table WHERE $fieldIdentification = :identification LIMIT 1";
-    $stmt = $this->pdo->prepare($query);
-    $stmt->bindValue(':identification', $identification);
-    $stmt->execute();
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    if (!$result) {
-        return '';
-    }
-
-    return $result[0][$field] ?? '';
 }
-
 ?>

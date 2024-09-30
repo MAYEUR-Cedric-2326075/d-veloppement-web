@@ -49,17 +49,4 @@ class ModeleClub
 
 
 
-
-try {
-    // Création d'une instance du modèle
-    $modeleClub = new ModeleClub();
-    var_dump($modeleClub->getDenomination(2));
-    var_dump($modeleClub->getCodePostal(2));
-
-
-} catch (Exception $e) {
-    echo 'Erreur : ' . $e->getMessage();
-}
-
-
 ?>

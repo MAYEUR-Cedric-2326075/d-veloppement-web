@@ -24,11 +24,11 @@ class ViewClub {
                 <?php
                 foreach ($this->tab as $club) {
                     ?><tr><td><?php
-                    echo $club["Id"]
+                    echo $club["id_club"]
                     ?></td><td><?php
-                    echo $club["CP"]
+                    echo $club["codePostal"]
                     ?></td><td><?php
-                    echo $club["Label"];
+                    echo $club["denomination"];
                     ?></td></tr><?php
                 }
                 ?>

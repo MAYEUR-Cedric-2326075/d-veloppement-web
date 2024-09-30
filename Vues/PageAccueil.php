@@ -1,14 +1,12 @@
 <?php
 include 'fonctions.php';
-?>
 
-<?php
-haut_page();
-?>
-
-<?php
-header_page();
-?>
+class PageAccueil {
+    public function show(): void {
+        ob_start();
+        haut_page();
+        header_page();
+        ?>
         <div id="slider">
             <div class="slide" id="slide3">
                 <img class="img" src="../Images/Slider3.jpg">
@@ -24,9 +22,10 @@ header_page();
             <p id="slidecounter">Page</p>
         </div>
         <main>
-            
-        </main>
 
-<?php
-bas_page();
+        </main>
+        <?php
+        bas_page();
+    }
+}
 ?>

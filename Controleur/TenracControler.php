@@ -1,51 +1,43 @@
 <?php
 
-require_once 'Noyau/ConnexionBD.php';
+require_once '../Modele/ModeleTenrac.php';
+require_once '../Vues/ViewTenrac.php';
 
 class TenracController {
 
-    private $pdo;
+    private $modele;
 
     public function __construct() {
-        $this->pdo = ConnectionBD::getInstance()->getPdo();
+        // Initialise le modèle
+        $this->modele = new ModeleTenrac();
     }
 
-    public function createTenrac($data) {
-        $sql = "INSERT INTO Tenrac (libelle_tenrac) VALUES (:libelle)";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':libelle', $data['libelle']);
-        return $stmt->execute();
+    // Méthode pour afficher tous les Tenrac
+    public function showAll() {
+        // Récupère tous les enregistrements de la table Tenrac depuis le modèle
+        $tenracList = $this->modele->getAllTenrac();
+
+        // Initialise la vue avec les données récupérées
+        $view = new ViewTenrac($tenracList);
+
+        // Affiche la vue
+        $view->show();
     }
 
-    public function getTenrac($id) {
-        $sql = "SELECT * FROM Tenrac WHERE id_tenrac = :id_tenrac";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':id_tenrac', $id);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
+    // Méthode pour afficher un Tenrac en particulier (par ID)
+    public function showById(int $id_tenrac) {
+        // Récupère les données spécifiques du Tenrac
+        $tenrac = $this->modele->getTenracById($id_tenrac);
 
-    public function getAllTenracs() {
-        $sql = "SELECT * FROM Tenrac";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+        // Initialise la vue avec les données récupérées
+        $view = new ViewTenrac([$tenrac]); // Tableau avec un seul élément
 
-    public function updateTenrac($id, $data) {
-        $sql = "UPDATE Tenrac SET libelle_tenrac = :libelle WHERE id_tenrac = :id_tenrac";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':id_tenrac', $id);
-        $stmt->bindParam(':libelle', $data['libelle']);
-        return $stmt->execute();
-    }
-
-    public function deleteTenrac($id) {
-        $sql = "DELETE FROM Tenrac WHERE id_tenrac = :id_tenrac";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':id_tenrac', $id);
-        return $stmt->execute();
+        // Affiche la vue
+        $view->show();
     }
 }
 
+// Test du contrôleur
+$testController = new TenracController();
+$testController->showAll(); // Pour afficher tous les Tenrac
 ?>

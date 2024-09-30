@@ -8,7 +8,7 @@ class ClubController {
     private $modele;
     public function __construct(){
         $this->modele = new ModeleClub();
-        
+
     }
 
     public function showAll(){

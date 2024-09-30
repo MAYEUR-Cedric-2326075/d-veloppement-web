@@ -10,7 +10,8 @@
 <a href="./PageAccueil.php"><img id="logo" src="../Images/Logo.webp"></a>
 <nav>
     <ol>
-        <li><a href="./PageAccueil.php">Accueil</a></li>
+        <img id="logoPrinc" src="../Images/Logo.webp">
+        <li><a href="./Accueil.php">Accueil</a></li>
         <li><a href="./Plat.php">Plat</a></li>
         <li><a href="./Repas.php">Repas</a></li>
     </ol>

@@ -1,9 +1,12 @@
 <?php
-include 'fonctions.php';
-
 require 'Noyau/ChargementAuto.php';
 
 session_start();
+
+if (!isset($_GET['url'])) {
+    header("Location: /Vue/Accueil.php");
+    exit();
+}
 
 $S_urlADecortiquer = isset($_GET['url']) ? $_GET['url'] : null;
 if (!$S_urlADecortiquer) {

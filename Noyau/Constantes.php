@@ -1,7 +1,7 @@
 <?php
 final class Constantes {
 
-    const REPERTOIRE_VUES        = '/Vues/';
+    const REPERTOIRE_VUES        = '/Vue/';
 
     const REPERTOIRE_MODELE      = '/Modele/';
 

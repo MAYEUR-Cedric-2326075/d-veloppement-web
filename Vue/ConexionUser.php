@@ -17,6 +17,7 @@ include 'fonctions.php';
 header_page();
 ?>
 <main>
+    <a href="./Accueil.php"><img id="logoConnect" src="../Images/Logo.webp"></a>
     <form class="corps" action="/intranet.html" method="post" enctype="text/plain">
         <h1>Connexion</h1>
         <label for="Identifiant">Identifiant :</label>

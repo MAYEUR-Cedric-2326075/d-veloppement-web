@@ -4,9 +4,6 @@ include 'fonctions.php';
 
 <?php
 haut_page();
-?>
-
-<?php
 header_page();
 ?>
         <div id="slider">

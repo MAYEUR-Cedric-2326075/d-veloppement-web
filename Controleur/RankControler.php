@@ -1,6 +1,7 @@
 <?php
 
 require_once 'Noyau/ConnexionBD.php';
+require_once 'Modele/ModeleRank.php';
 
 class RankController {
 

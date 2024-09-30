@@ -8,10 +8,10 @@
 </head>
     <body>
         <header>
-            <a href="./PageAccueil.php"><img id="logo" src=""></a>
+            <a href="Accueil.php"><img id="logo" src=""></a>
             <nav>
                 <ol>
-                    <li><a href="./PageAccueil.php">Accueil</a></li>
+                    <li><a href="Accueil.php">Accueil</a></li>
                     <li><a href="./Plat.php">Plat</a></li>
                     <li><a href="./Repas.php">Repas</a></li>
                 </ol>

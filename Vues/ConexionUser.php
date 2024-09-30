@@ -2,7 +2,7 @@
 include 'fonctions.php';
 
 class ConexionUser {
-    private string $emeil;
+    private string $identifiant;
     private string $motDePasse;
     public function __construct() {
         // On initialise les propriétés avec des valeurs vides ou récupérées via POST
@@ -10,7 +10,7 @@ class ConexionUser {
         $this->motDePasse = isset($_POST['mot_de_passe']) ? $_POST['mot_de_passe'] : '';
     }
     public function GetEmail(): string {
-        return $this->emeil;
+        return $this->identifiant;
     }
 
     public function getMotDePasse(): string {

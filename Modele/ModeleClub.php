@@ -41,6 +41,7 @@ class ModeleClub
         return $this->pdo->getElement("Club", "denomination", "id_club", $id_club);
     }
 
+
     public function getAllDenomination($id_club): array{return $this->pdo->getAll("Club","denomination");}
 
 

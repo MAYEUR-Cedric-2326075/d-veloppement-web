@@ -26,18 +26,15 @@ class ModeleTenrac
         ];
         $this->pdo->insert('Tenrac', $parameter);
     }
-
-    // Méthode pour supprimer un enregistrement par son ID
-    public function deleteTenrac(int $id_tenrac): bool
+    
+    public function deleteTenrac(string $mail_tenrac): bool
     {
-        $where = "id_tenrac = $id_tenrac";
+        $where = "mail_tenrac = $mail_tenrac";
         return $this->pdo->delete('Tenrac', $where);
     }
-
-    // Méthode pour mettre à jour un enregistrement
-    public function updateTenrac(int $id_tenrac, array $data): void
+    public function updateTenrac(string $mail_tenrac, array $data): void
     {
-        $where = "id_tenrac = $id_tenrac";
+        $where = "mail_tenrac = $mail_tenrac";
         $this->pdo->update('Tenrac', $data, $where);
     }
 
@@ -48,22 +45,22 @@ class ModeleTenrac
     }
 
     // Méthode pour récupérer un Tenrac par son ID
-    public function getTenracById(int $id_tenrac): array
+    public function getTenrac(string $mail_tenrac): array
     {
-        return $this->pdo->getAll("Tenrac", "id_tenrac", $id_tenrac);
+        return $this->pdo->getAll("Tenrac", "mail_tenrac", $mail_tenrac);
     }
 
     // Méthode pour obtenir le nom d'un Tenrac par son ID
-    public function getTenracName(int $id_tenrac): string
+    public function getTenracName(string $mail_tenrac): string
     {
-        return $this->pdo->getElement("Tenrac", "Name", "id_tenrac", $id_tenrac);
+        return $this->pdo->getElement("Tenrac", "Name", "mail_tenrac", $mail_tenrac);
     }
 
     // Méthode pour obtenir le nom complet (Name + Surname) d'un Tenrac par son ID
-    public function getTenracFullName(int $id_tenrac): string
+    public function getTenracFullName(string $mail_tenrac): string
     {
-        $name = $this->pdo->getElement("Tenrac", "Name", "id_tenrac", $id_tenrac);
-        $surname = $this->pdo->getElement("Tenrac", "Surname", "id_tenrac", $id_tenrac);
+        $name = $this->pdo->getElement("Tenrac", "Name", "mail_tenrac", $mail_tenrac);
+        $surname = $this->pdo->getElement("Tenrac", "Surname", "mail_tenrac", $mail_tenrac);
         return $name . " " . $surname;
     }
 

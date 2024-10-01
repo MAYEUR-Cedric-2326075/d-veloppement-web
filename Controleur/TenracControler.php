@@ -8,11 +8,9 @@ class TenracController {
     private $modele;
 
     public function __construct() {
-        // Initialise le modèle
         $this->modele = new ModeleTenrac();
     }
 
-    // Méthode pour afficher tous les Tenrac
     public function showAll() {
         // Récupère tous les enregistrements de la table Tenrac depuis le modèle
         $tenracList = $this->modele->getAllTenrac();
@@ -24,10 +22,9 @@ class TenracController {
         $view->show();
     }
 
-    // Méthode pour afficher un Tenrac en particulier (par ID)
-    public function showById(int $id_tenrac) {
+    public function showById(string $mail_tenra) {
         // Récupère les données spécifiques du Tenrac
-        $tenrac = $this->modele->getTenracById($id_tenrac);
+        $tenrac = $this->modele->getTenrac($mail_tenra);
 
         // Initialise la vue avec les données récupérées
         $view = new ViewTenrac([$tenrac]); // Tableau avec un seul élément
@@ -38,6 +35,6 @@ class TenracController {
 }
 
 // Test du contrôleur
-$testController = new TenracController();
-$testController->showAll(); // Pour afficher tous les Tenrac
+//$testController = new TenracController();
+//$testController->showAll(); // Pour afficher tous les Tenrac
 ?>

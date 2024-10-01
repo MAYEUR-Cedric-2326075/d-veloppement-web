@@ -16,6 +16,7 @@ libel_sex VARCHAR NOT NULL,
 id_titre INT,
 id_rang INT,
 id_club INT,
+mot_de_passe VARCHAR(255) NOT NULL,
 is_admin BOOLEAN NOT NULL DEFAULT false);
 
 CREATE TABLE Sex (

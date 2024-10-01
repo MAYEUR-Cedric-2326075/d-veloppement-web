@@ -12,9 +12,11 @@ class ModeleTenrac
     }
 
     // Méthode pour créer un enregistrement dans la table Tenrac
-    public function createTenrac(string $name, string $surname, int $id_dignite, string $libel_sex, int $id_titre, int $id_rang, int $id_grade, int $id_club): void
+    public function createTenrac(string $mail_tenrac, string $name, string $surname, int $id_dignite, string $libel_sex, int $id_titre, int $id_rang, int $id_grade, int $id_club, string $pass_word, bool $is_admin = false): bool
     {
-        $parameter = [
+        $hashed_password = password_hash($pass_word, PASSWORD_DEFAULT);
+        $parameters = [
+            'mail_tenrac' => $mail_tenrac,
             'Name' => $name,
             'Surname' => $surname,
             'id_dignite' => $id_dignite,
@@ -22,52 +24,92 @@ class ModeleTenrac
             'id_titre' => $id_titre,
             'id_rang' => $id_rang,
             'id_grade' => $id_grade,
-            'id_club' => $id_club
+            'id_club' => $id_club,
+            'pass_word' => $hashed_password,
+            'is_admin' => $is_admin
         ];
-        $this->pdo->insert('Tenrac', $parameter);
+
+        return $this->pdo->insert('Tenrac', $parameters);
     }
-    
+
+    // Méthode pour supprimer un Tenrac par son mail
     public function deleteTenrac(string $mail_tenrac): bool
     {
-        $where = "mail_tenrac = $mail_tenrac";
+        $where = ['mail_tenrac' => $mail_tenrac];
         return $this->pdo->delete('Tenrac', $where);
     }
-    public function updateTenrac(string $mail_tenrac, array $data): void
+
+    // Méthode pour mettre à jour un enregistrement de Tenrac
+    public function updateTenrac(string $mail_tenrac, array $data): bool
     {
-        $where = "mail_tenrac = $mail_tenrac";
-        $this->pdo->update('Tenrac', $data, $where);
+        $where = "mail_tenrac = :mail_tenrac";
+        $data['mail_tenrac'] = $mail_tenrac;
+        return $this->pdo->update('Tenrac', $data, $where);
     }
 
-    // Méthode pour récupérer tous les enregistrements
+    // Méthode pour récupérer tous les enregistrements de la table Tenrac
     public function getAllTenrac(): array
     {
-        return $this->pdo->getAll("Tenrac");
+        return $this->pdo->getAll('Tenrac');
     }
 
-    // Méthode pour récupérer un Tenrac par son ID
+    // Méthode pour récupérer un Tenrac par son mail
     public function getTenrac(string $mail_tenrac): array
     {
-        return $this->pdo->getAll("Tenrac", "mail_tenrac", $mail_tenrac);
+        return $this->pdo->getAll('Tenrac', 'mail_tenrac', $mail_tenrac);
     }
 
-    // Méthode pour obtenir le nom d'un Tenrac par son ID
-    public function getTenracName(string $mail_tenrac): string
+    // Getters pour chaque champ de la table Tenrac
+    public function getMailTenrac(string $mail_tenrac): string
     {
-        return $this->pdo->getElement("Tenrac", "Name", "mail_tenrac", $mail_tenrac);
+        return $this->pdo->getElement('Tenrac', 'mail_tenrac', 'mail_tenrac', $mail_tenrac);
     }
-
-    // Méthode pour obtenir le nom complet (Name + Surname) d'un Tenrac par son ID
-    public function getTenracFullName(string $mail_tenrac): string
+    public function getName(string $mail_tenrac): string
     {
-        $name = $this->pdo->getElement("Tenrac", "Name", "mail_tenrac", $mail_tenrac);
-        $surname = $this->pdo->getElement("Tenrac", "Surname", "mail_tenrac", $mail_tenrac);
-        return $name . " " . $surname;
+        return $this->pdo->getElement('Tenrac', 'Name', 'mail_tenrac', $mail_tenrac);
+    }
+    public function getSurname(string $mail_tenrac): string
+    {
+        return $this->pdo->getElement('Tenrac', 'Surname', 'mail_tenrac', $mail_tenrac);
+    }
+    public function getIdDignite(string $mail_tenrac): int
+    {
+        return (int)$this->pdo->getElement('Tenrac', 'id_dignite', 'mail_tenrac', $mail_tenrac);
+    }
+    public function getLibelSex(string $mail_tenrac): string
+    {
+        return $this->pdo->getElement('Tenrac', 'libel_sex', 'mail_tenrac', $mail_tenrac);
+    }
+    public function getIdTitre(string $mail_tenrac): int
+    {
+        return (int)$this->pdo->getElement('Tenrac', 'id_titre', 'mail_tenrac', $mail_tenrac);
+    }
+    public function getIdRang(string $mail_tenrac): int
+    {
+        return (int)$this->pdo->getElement('Tenrac', 'id_rang', 'mail_tenrac', $mail_tenrac);
+    }
+    public function getIdGrade(string $mail_tenrac): int
+    {
+        return (int)$this->pdo->getElement('Tenrac', 'id_grade', 'mail_tenrac', $mail_tenrac);
+    }
+    public function getIdClub(string $mail_tenrac): int
+    {
+        return (int)$this->pdo->getElement('Tenrac', 'id_club', 'mail_tenrac', $mail_tenrac);
+    }
+    public function getPassWord(string $mail_tenrac): string
+    {
+        return $this->pdo->getElement('Tenrac', 'pass_word', 'mail_tenrac', $mail_tenrac);
     }
 
-    // Méthode pour obtenir tous les enregistrements selon un certain critère
+    public function getIsAdmin(string $mail_tenrac): bool
+    {
+        return (bool)$this->pdo->getElement('Tenrac', 'is_admin', 'mail_tenrac', $mail_tenrac);
+    }
+
+    // Méthode pour obtenir tous les Tenrac appartenant à un certain club
     public function getAllTenracByClub(int $id_club): array
     {
-        return $this->pdo->getAll("Tenrac", "id_club", $id_club);
+        return $this->pdo->getAll('Tenrac', 'id_club', $id_club);
     }
 }
 ?>

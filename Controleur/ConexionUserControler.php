@@ -27,7 +27,7 @@ class ConexionUserControler
                 }
             }
         }
-        $view->show();  // Affiche la vue de connexion si la validation échoue ou si le formulaire n'a pas été soumis
+        $view->showFailure(); // Affiche la vue de connexion si la validation échoue ou si le formulaire n'a pas été soumis
         return  false;
     }
 

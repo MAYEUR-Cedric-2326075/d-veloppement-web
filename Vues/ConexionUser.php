@@ -55,5 +55,20 @@ class ConexionUser {
         <?php
         bas_page();
     }
+    public function showFailure(): void {
+        ob_start();
+        haut_page();
+        header_page();
+        ?>
+        <main>
+            <div class="failure-message">
+                <h1>Échec de la connexion</h1>
+                <p>Les informations que vous avez fournies sont incorrectes. Veuillez réessayer.</p>
+                <a href="/" class="button">Réessayer</a>
+            </div>
+        </main>
+        <?php
+        bas_page();
+    }
 }
 ?>

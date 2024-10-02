@@ -4,7 +4,7 @@ function header_page() : void{
     <header>
         <div>
             <nav>
-                <a href="./ConexionUser.php">Connexion</a>
+                <a href="ViewConexionUser.php">Connexion</a>
             </nav>
         </div>
         <a href="./PageAccueil.php"><img id="logo" src="../Images/Logo.webp"></a>
@@ -41,7 +41,7 @@ function haut_page() : void{
 function bas_page() : void{
 ?>
 <footer>
-
+    SIMON Louis, DELIN Maxime, MAYEUR Cedric, DARIETTO Nicolas, MINIERE Mathias
 </footer>
 </body>
 </html>

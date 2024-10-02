@@ -1,5 +1,5 @@
 <?php
-include 'fonctions.php';
+include 'Vues/fonctions.php';
 
 require 'Noyau/ChargementAuto.php';
 
@@ -7,7 +7,7 @@ session_start();
 
 $S_urlADecortiquer = isset($_GET['url']) ? $_GET['url'] : null;
 if (!$S_urlADecortiquer) {
-    $S_urlADecortiquer = 'Accueil';
+    $S_urlADecortiquer = 'PageAccueil.php';
 }
 $A_postParams = isset($_POST) ? $_POST : null;
 

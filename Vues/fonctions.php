@@ -1,29 +1,30 @@
 <?php
 function header_page() : void{
-?>
+    ?>
     <header>
         <div>
             <nav>
-                <a href="ViewConexionUser.php">Connexion</a>
+                <a href="../Controleur/ConexionUserControler.php">Connexion</a>
             </nav>
         </div>
-        <a href="./PageAccueil.php"><img id="logo" src="../Images/Logo.webp"></a>
+        <a href="../Controleur/PageAccueilControler.php"><img id="logo" src="/Images/Logo.webp"></a>
         <nav>
             <ol>
-                <li><a href="./PageAccueil.php">Accueil</a></li>
-                <li><a href="./Plat.php">Plat</a></li>
-                <li><a href="./Repas.php">Repas</a></li>
+                <img id="logoPrinc" src="../Images/Logo.webp">
+                <li><a href="../Controleur/PageAccueilControler.php">Accueil</a></li>
+                <li><a href="../Controleur/IncriptionControlerUser.php">Inscription</a></li>
+                <li><a href="../Controleur/ClubControler.php">Clubs</a></li>
             </ol>
         </nav>
     </header>
-<?php
+    <?php
 }
 ?>
 
 <?php
 function haut_page() : void{
 ?>
-<!doctype html>
+    <!doctype html>
 <html lang="fr">
 <head>
     <meta charset="utf-8">

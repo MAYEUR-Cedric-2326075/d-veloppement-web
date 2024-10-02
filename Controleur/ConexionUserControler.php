@@ -1,6 +1,6 @@
 <?php
 require_once '../Modele/ModeleTenrac.php';
-require_once '../Vues/ConexionUser.php';
+require_once '../Vues/ViewConexionUser.php';
 class ConexionUserControler
 {
     private $modelTenrac;
@@ -12,16 +12,16 @@ class ConexionUserControler
 
     public function connectionValidation(): bool
     {
-        $view = new ConexionUser();
+        $view = new ViewConexionUser();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {  // Vérifie que le formulaire a été soumis
             $email = $view->GetEmail();
-            $motDePasse = $view->getMotDePasse();
+            $motDePasse = $_POST['mot_de_passe'];
 
             // Vérifie si l'utilisateur existe dans la base de données
-            $tenrac = $this->modelTenrac->getTenrac($email);
-            if (!empty($tenrac)) {
+            $pw = $this->modelTenrac->getPassWord($email);
+            if (1) {
                 // Utilise password_verify si le mot de passe est haché
-                if (password_verify($motDePasse, $tenrac['mot_de_passe'])) {
+                if ($motDePasse == $pw) {
                     $view->showSuccess();
                     return true;
                 }

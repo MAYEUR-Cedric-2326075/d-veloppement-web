@@ -1,7 +1,7 @@
 <?php
 include 'fonctions.php';
 
-class ConexionUser {
+class ViewConexionUser {
     private string $identifiant;
     private string $motDePasse;
 
@@ -50,6 +50,8 @@ class ConexionUser {
                 <h1>Connexion réussie</h1>
                 <p>Bienvenue, vous êtes maintenant connecté à l'intranet.</p>
                 <a href="/intranet.html" class="button">Accéder à l'intranet</a>
+                <?php
+                header('Location: ./ClubControler.php');?>
             </div>
         </main>
         <?php

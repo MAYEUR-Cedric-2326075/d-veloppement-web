@@ -16,7 +16,6 @@ class InscriptionUserControler
 
     public function inscriptionValidation(): bool
     {
-
         $clubs = $this->modelClub->getAllClub();
         $view = new ViewInscriptionUser($clubs);
 
@@ -28,16 +27,24 @@ class InscriptionUserControler
             $sexe = $_POST['sexe'];
             $idClub = $_POST['id_club'];
 
-            if ($this->validateInput($nom, $prenom, $email, $motDePasse, $sexe, $idClub)) {
+            // Ajoutez des messages de débogage
+            echo "Nom : $nom<br>";
+            echo "Prénom : $prenom<br>";
+            echo "Email : $email<br>";
+            echo "Mot de passe : $motDePasse<br>";
+            echo "Sexe : $sexe<br>";
+            echo "ID Club : $idClub<br>";
+
+            if ($this->validateInput($nom, $prenom, $email, $motDePasse, $sexe)) {
                 $result = $this->modelTenrac->createTenrac(
                     $email,
                     $nom,
                     $prenom,
-                    1,
+                    1,  // Valeur par défaut pour id_dignite
                     $sexe,
-                    1,
-                    1,
-                    1,
+                    1,  // Valeur par défaut pour id_titre
+                    1,  // Valeur par défaut pour id_rang
+                    1,  // Valeur par défaut pour id_grade
                     $idClub,
                     $motDePasse,
                     false
@@ -60,27 +67,13 @@ class InscriptionUserControler
         return false;
     }
 
-    private function validateInput($nom, $prenom, $email, $motDePasse, $sexe, $idClub): bool
+
+    private function validateInput($nom, $prenom, $email, $motDePasse, $sexe): bool
     {
-        // Validation basique des champs
-        if (empty($nom) || empty($prenom) || empty($email) || empty($motDePasse) || empty($sexe) || empty($idClub)) {
+
+        if (empty($nom) || empty($prenom) || empty($email) || empty($motDePasse) || empty($sexe) ) {
             return false;
         }
-
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            return false;
-        }
-
-        if (!in_array($sexe, ['Male', 'Female'])) {
-            return false;
-        }
-
-        // Vérifie que le club existe
-        if (!$this->modelClub->getDenomination($idClub)) {
-            return false;
-        }
-
-        // Vous pouvez ajouter plus de validations (longueur du mot de passe, etc.)
         return true;
     }
 }

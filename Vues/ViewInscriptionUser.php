@@ -51,7 +51,7 @@ class ViewInscriptionUser {
                 <input id="mot_de_passe" type="password" name="mot_de_passe" value="" required="required""><br>
 
                 <!-- <input id="send" class="envoi" type="submit" value="Envoyer"> -->
-                <a class="button" id="send" href="/intranet.html">Envoyer</a>
+                <a class="button" id="send" href="/Controleur/ClubControler.php">Envoyer</a>
             </form>
         </main>
         <?php

@@ -112,4 +112,6 @@ class ModeleTenrac
         return $this->pdo->getAll('Tenrac', 'id_club', $id_club);
     }
 }
+
+
 ?>

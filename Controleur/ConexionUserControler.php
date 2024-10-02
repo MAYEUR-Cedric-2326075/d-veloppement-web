@@ -13,21 +13,21 @@ class ConexionUserControler
     public function connectionValidation(): bool
     {
         $view = new ViewConexionUser();
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {  // Vérifie que le formulaire a été soumis
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = $view->GetEmail();
             $motDePasse = $_POST['mot_de_passe'];
 
-            // Vérifie si l'utilisateur existe dans la base de données
+
             $pw = $this->modelTenrac->getPassWord($email);
             if (1) {
-                // Utilise password_verify si le mot de passe est haché
+
                 if ($motDePasse == $pw) {
                     $view->showSuccess();
                     return true;
                 }
             }
         }
-        $view->showFailure(); // Affiche la vue de connexion si la validation échoue ou si le formulaire n'a pas été soumis
+        $view->show();
         return  false;
     }
 

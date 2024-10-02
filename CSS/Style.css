@@ -8,14 +8,15 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("../Images/Fond_ardoise.png");
 }
 
 header {
-    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    box-shadow: 0px 0px 22px -6px rgba(0,0,0,0.32);
 }
 
 header div {
@@ -46,8 +47,7 @@ div nav, div nav li,  div nav ol {
 }
 
 div nav a {
-    background-color: white;
-
+    background-color: gray;
     padding: 0 1em;
     height: 100%;
     display: flex;
@@ -60,7 +60,7 @@ div nav a {
 }
 
 div nav a:hover {
-    background-color: RED;
+    background-color: dimgray;
     color: white;
 }
 
@@ -73,8 +73,15 @@ header > nav li {
     flex: 1 auto;
 }
 
+#logoPrinc{
+    padding: 1em;
+    margin: auto 0;
+    display: flex;
+}
+
 header > nav a {
     padding: 1em;
+    margin: 4% 4%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -83,12 +90,20 @@ header > nav a {
     font-weight: 600;
     transition-duration: 150ms;
     border-radius: 10px;
+    background-color: dimgray;
 }
 
 header > nav a:hover {
-    background-color: rgb(255, 255, 255);
-    transform: scale(0.9);
+    background-color: gray;
+    transform: scale(1.08);
     outline: solid black 0.1em;
+}
+
+#logoConnect{
+    width: 25%;
+    padding: 1em;
+    margin: auto;
+    display: flex;
 }
 
 main {
@@ -103,7 +118,7 @@ form {
     margin: auto;
     width: max-content;
     max-width: calc(100% - 3em);
-    border: solid RED;
+    border: solid dimgray;
     border-radius: 1em;
     padding: 1em 5em;
     background-color: rgb(238, 238, 238);
@@ -132,7 +147,7 @@ input {
 }
 
 .button, input[type="submit"] {
-    background-color: white;
+    background-color: darkgray;
     display: block;
     border: none;
     font-weight: 600;
@@ -146,7 +161,7 @@ input {
 }
 
 .button:hover, input[type="submit"]:hover {
-    background-color: RED;
+    background-color: dimgray;
     color: white;
 }
 
@@ -322,7 +337,7 @@ h1,h2 {
     border-radius: 2em;
 
     padding: 0.2em;
-    
+
     display: flex;
     position: absolute;
 
@@ -330,11 +345,6 @@ h1,h2 {
 
     transform-style: preserve-3d;
     transition: transform 0.8s cubic-bezier(0.86,0,0.07,1);
-
-    width: -webkit-fill-available;
-    width: -moz-available;
-    height: -webkit-fill-available;
-    height: -moz-available;;
 }
 
 .profile > div > div {
@@ -371,7 +381,7 @@ h1,h2 {
 }
 
 footer{
-    background-color: rgb(0, 101, 189);
+    background-color: grey;
     text-align: center;
     color: white;
     border-radius: 1000px 1000px 0 0;
@@ -389,8 +399,6 @@ footer{
     border-radius: 1em;
     padding: 1em 2em;
     background-color: rgb(238, 238, 238);
-	width: -webkit-fill-available;
-    width: -moz-available;
     margin: 1em;
 }
 
@@ -479,4 +487,15 @@ footer{
 .nomResp{
     font-size: 80%;
     padding-left: 2em;
+}
+
+table
+{
+    margin: auto;
+    font-size: 2em;
+    -webkit-border-horizontal-spacing: 1em;
+}
+tr
+{
+    text-align :center;
 }

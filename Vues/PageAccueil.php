@@ -2,6 +2,10 @@
 include 'fonctions.php';
 
 class PageAccueil {
+
+    public function __construct() {
+
+    }
     public function show(): void {
         ob_start();
         haut_page();
